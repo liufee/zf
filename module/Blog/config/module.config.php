@@ -46,7 +46,7 @@ return [
 
     'view_manager' => array(
         'template_path_stack' => array(
-            'album' => __DIR__ . '/../view',
+            'blog' => __DIR__ . '/../view',
         ),
     ),
 ];
