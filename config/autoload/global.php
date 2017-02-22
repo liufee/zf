@@ -28,4 +28,19 @@ return array(
             => 'Zend\Db\Adapter\AdapterServiceFactory',
         ),
     ),
+    'doctrine' => array(
+        // Connections
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' =>'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host'     => 'localhost',
+                    'port'     => '3306',
+                    'user'     => 'root',
+                    'password' => '',
+                    'dbname'   => 'fff',
+                )
+            ),
+        ),
+    )
 );
