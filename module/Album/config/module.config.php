@@ -17,16 +17,30 @@ return array(
     'router' => array(
         'routes' => array(
             'album' => array(
-                'type'    => 'segment',
+                'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/album[/:action][/:id]',
+                    'route'    => '/album[/:controller[/:action][/:id]]',
                     'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'         => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Album\Controller\Album',
-                        'action'     => 'index',
+                        '__NAMESPACE__' => 'Album\Controller',
+                        'controller'    => 'Album',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Wildcard',
+                        'options' => array(
+                            'key_value_delimiter' => '/',
+                            'param_delimiter' => '/',
+                            'defaults' => array(
+                            ),
+                        ),
                     ),
                 ),
             ),
@@ -38,19 +52,4 @@ return array(
             'album' => __DIR__ . '/../view',
         ),
     ),
-
-    'doctrine' => array(
-        'driver' => array(
-            __NAMESPACE__ . '_driver' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
-            ),
-            'orm_default' => array(
-                'drivers' => array(
-                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
-                )
-            )
-        )
-    )
 );

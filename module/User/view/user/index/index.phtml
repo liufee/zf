@@ -1,0 +1,30 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = '';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('user', array('controller'=>'index', 'action'=>'create'));?>">创建用户</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>用户名</th>
+        <th></th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($users as $user) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($user->getName());?></td>
+            <td><?php echo $this->escapeHtml($user->getPassword());?></td>
+            <td>
+                <a href="<?php echo $this->url('user',
+                    array('action'=>'edit', 'id' => $user->getId()))?>">修改</a>
+                <a href="<?php echo $this->url('user',
+                    array('action'=>'delete', 'id' => $user->getId()));?>">删除</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
