@@ -1,4 +1,4 @@
-ZendSkeletonApplication
+Zend Framework  2 + doctrine 2 demo
 =======================
 
 Introduction
@@ -75,3 +75,4 @@ project and you should be ready to go! It should look something like below:
             Allow from all
         </Directory>
     </VirtualHost>
+# zf
