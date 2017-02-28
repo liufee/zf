@@ -96,4 +96,17 @@ class IndexController extends AbstractActionController
         }
         return $this->em;
     }
+
+    /**
+     * OneToMany demo
+     */
+    public function OrdersAction()
+    {
+        $entity = $this->getEntityManager()->find('User\Entity\User', 1);
+        $orders = $entity->getOrders();
+        foreach ($orders as $order){
+            echo $order->getGoods()."<br>";
+        }
+        exit;
+    }
 }

@@ -79,6 +79,9 @@ class User implements InputFilterAwareInterface
     /** @ORM\Column(type="string") */
     protected $name;
 
+    /** @ORM\Column(type="string") */
+    protected $password;
+
     /**
      * @return mixed
      */
@@ -127,6 +130,27 @@ class User implements InputFilterAwareInterface
         $this->password = $password;
     }
 
-    /** @ORM\Column(type="string") */
-    protected $password;
+    /**
+     * @var \User\Entity\Orders
+     * @ORM\OneToMany(targetEntity="\User\Entity\Orders", mappedBy="user")
+     */
+    protected $orders;
+
+    /**
+     * @return \User\Entity\Orderq
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @param \User\Entity\Orders $orders
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
+    }
+
+
 }
